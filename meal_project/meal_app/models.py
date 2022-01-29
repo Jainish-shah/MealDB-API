@@ -1,8 +1,4 @@
-from dis import Instruction
-from pyexpat import model
-from unicodedata import category
 from django.db import models
-from spacy import blank
 
 class Meal(models.Model):
     name = models.CharField(max_length=50, blank= True, null = True)
