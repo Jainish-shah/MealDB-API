@@ -11,9 +11,7 @@ def get_meals(request):
         response = requests.get(url)
         data = response.json()
         meals = data['meals']
-
-        # in order to populate our database with the list our HTTP request returned
-        for i in meals:
+        for i in meals:  # in order to populate our database with the list our HTTP request returned
             meal_data = Meal(
                 name = i['strMeal'],
                 category = i['strCategory'],
@@ -24,15 +22,9 @@ def get_meals(request):
             )
             meal_data.save()
             all_meals = Meal.objects.all().order_by('-id')
-
-    return render (request, 'meals/meal.html', { "all_meals": 
-    all_meals} )
+    return render (request, 'meals/meal.html', {"all_meals": all_meals})
 
 def meal_detail(request, id):
     meal = Meal.objects.get(id = id)
     print(meal)
-    return render (
-        request,
-        'meals/meal_detail.html',
-        {'meal':meal}
-    )
+    return render (request,'meals/meal_detail.html',{'meal':meal})
