@@ -22,9 +22,9 @@ def get_meals(request):
             )
             meal_data.save()
             all_meals = Meal.objects.all().order_by('-id')
-    return render (request, 'meals/meal.html', {"all_meals": all_meals})
+    return render (request, "meals/meal.html", {"all_meals": all_meals}) 
 
 def meal_detail(request, id):
     meal = Meal.objects.get(id = id)
     print(meal)
-    return render (request,'meals/meal_detail.html',{'meal':meal})
+    return render (request,"meals/meal_detail.html",{'meal':meal})
